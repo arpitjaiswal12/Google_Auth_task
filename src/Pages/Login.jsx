@@ -7,23 +7,6 @@ export default function Login() {
     navigate("/profile");
   }
 
-  const handleButtonClick = () => {
-    // Detect if the page is opened in Chrome browser
-    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-
-    // Check if the URL was opened externally (e.g., from another app)
-    const isExternal = !document.referrer.startsWith(window.location.origin);
-
-    if (isChrome && isExternal) {
-      // Prompt the user to open the URL in Chrome
-      const openInChrome = confirm("For best experience, open this URL in Chrome browser. Do you want to continue?");
-      if (openInChrome) {
-        // Replace current URL with the desired URL
-        window.location.replace('https://google-auth-task.vercel.app/');
-      }
-    }
-  };
-
   return (
     <section>
       <div className="flex items-center justify-center  px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
@@ -42,10 +25,8 @@ export default function Login() {
             <button
               type="button"
               className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-blue-800 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
-              onClick={() => { 
-               
-                loginWithRedirect();
-                handleButtonClick(); }}
+              onClick={() => {
+                loginWithRedirect();}}
             >
               <span className="mr-2 inline-block">
                 <svg
